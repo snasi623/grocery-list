@@ -1,0 +1,8 @@
+slug
+    completes URL https://tasty.co/recipe/
+q
+    Ingredient or name to search by
+sections.component.Ingredient
+    Ingredients
+nutrition
+    Calories, protein, carbs, fat

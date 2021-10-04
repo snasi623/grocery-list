@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 
 class Meals extends Component {
+    constructor(props) {
+        super(props);
+        this.createMeal = this.createMeal.bind(this);
+    }
+
+    createMeal(item) {
+        return <div key={item.key}>{item.text}</div>
+    }
+    
     render() {
+        var mealEntries = this.props.entries;
+        var listMeals = mealEntries.map(this.createMeal);
+
         return (
-            <div>
-                <p>Apple Pie</p>
-                <p>Calories</p>
-                <p>Protein</p>
-                <p>Carbohydrates</p>
-                <p>Fat</p>
-                <a href="https://tasty.co/recipe/air-fryer-apple-fritters-with-cider-glaze">Link</a>
+            <div className="listOfMeals">
+                {listMeals}
             </div>
         )
     }

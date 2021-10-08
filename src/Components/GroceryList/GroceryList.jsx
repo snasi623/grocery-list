@@ -10,11 +10,10 @@ class GroceryList extends Component {
             items: []
         };
 
-        this.getGroceries();
-        this.addMeal = this.addMeal.bind(this);
+        this.onSearch = this.onSearch.bind(this);
     }
 
-    getGroceries() {
+    getRecipes(query) {
         var foodAPI = {
             url: 'https://tasty.p.rapidapi.com/recipes/list',
             apikey: '57c2c90b38msheb41e5bb4afcb98p17dd72jsn599dc11da7b1'
@@ -22,32 +21,40 @@ class GroceryList extends Component {
 
         var params = {
             fmt: 'json',
-            params: {from: '0', size: '20', q: 'apple'},
+            params: {from: '0', size: '3', q: query},
             headers: {
                 'x-rapidapi-host': 'tasty.p.rapidapi.com',
                 'x-rapidapi-key': '57c2c90b38msheb41e5bb4afcb98p17dd72jsn599dc11da7b1'
             }
         }
 
-        axios.get(foodAPI.url, params).then(response => 
-            console.log(response)
-        )
+        return axios.get(foodAPI.url, params);
     }
 
-    addMeal(e) {
+    onSearch(e) {
         if (this.mealName.value !== "") {
-            var newItem = {
-                text: this.mealName.value,
-                key: Date.now()
-            };
+            this.getRecipes(this.mealName.value).then(response => {
+                console.log('Response', response);
 
-            this.setState((prevState) => {
-                return {
-                    items: prevState.items.concat(newItem)
+                let recipe = response.data.results[0].canonical_id.indexOf('compilation') !== -1 ?
+                    response.data.results[0].recipes[0]
+                    : response.data.results[0]
+                console.log('Recipe', recipe);
+
+                let newItem = {
+                    text: this.mealName.value,
+                    key: Date.now(),
+                    link: recipe.slug,
                 };
-            });
 
-            this.mealName.value = "";
+                this.setState((prevState) => {
+                    return {
+                        items: prevState.items.concat(newItem)
+                    };
+                });
+
+                this.mealName.value = "";
+            });
         }
         e.preventDefault();
         console.log(this.state.items)
@@ -58,8 +65,8 @@ class GroceryList extends Component {
             <div>
                 <h1>React App</h1>
                 <p>Search for a recipe you want to cook this week to get a list of groceries you will need to buy.</p>
-                <form onSubmit={this.addMeal}>
-                    <input placeholder="Search for a recipe" type="text"/>
+                <form onSubmit={this.onSearch}>
+                    <input ref={(a) => this.mealName = a} placeholder="Search for a recipe" type="text"/>
                     <button>Submit</button>
                 </form>
                 <Meals entries={this.state.items}/>

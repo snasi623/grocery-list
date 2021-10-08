@@ -7,9 +7,14 @@ class Meals extends Component {
     }
 
     createMeal(item) {
-        return <div key={item.key}>{item.text}</div>
+        return (
+            <div key={item.key}>
+                <div id="mealName">{item.text}</div>
+                <a href={`https://tasty.co/recipe/${item.link}`}>Recipe</a>
+            </div>
+        )
     }
-    
+
     render() {
         var mealEntries = this.props.entries;
         var listMeals = mealEntries.map(this.createMeal);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Meals from './Meals/Meals';
+import Groceries from './Groceries/Groceries'
 
 class GroceryList extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class GroceryList extends Component {
 
         var params = {
             fmt: 'json',
-            params: {from: '0', size: '3', q: query},
+            params: {from: '0', size: '25', q: query},
             headers: {
                 'x-rapidapi-host': 'tasty.p.rapidapi.com',
                 'x-rapidapi-key': '57c2c90b38msheb41e5bb4afcb98p17dd72jsn599dc11da7b1'
@@ -36,15 +37,26 @@ class GroceryList extends Component {
             this.getRecipes(this.mealName.value).then(response => {
                 console.log('Response', response);
 
-                let recipe = response.data.results[0].canonical_id.indexOf('compilation') !== -1 ?
-                    response.data.results[0].recipes[0]
-                    : response.data.results[0]
+                let recipe;
+                for (let i = 0; i < response.data.results.length; i++) {
+                    if (response.data.results[i].canonical_id.indexOf('recipe') !== 0) {
+                        continue;
+                    }
+                    recipe = response.data.results[i];
+                }
+
+                if (!recipe) {
+                    console.log('No recipe found');
+                    return;
+                }
+
                 console.log('Recipe', recipe);
 
                 let newItem = {
                     text: this.mealName.value,
                     key: Date.now(),
                     link: recipe.slug,
+                    ingredients: this.calculateIngredients(recipe)
                 };
 
                 this.setState((prevState) => {
@@ -60,6 +72,17 @@ class GroceryList extends Component {
         console.log(this.state.items)
     }
 
+    calculateIngredients(recipe) {
+        let result = [
+            { name: "Apple", quantity: 2 },
+            { name: "Peach", quantity: 4 }
+        ]
+
+        // insert for loop here
+
+        return result
+    }
+
     render() {
         return (
             <div>
@@ -70,6 +93,7 @@ class GroceryList extends Component {
                     <button>Submit</button>
                 </form>
                 <Meals entries={this.state.items}/>
+                <Groceries items={this.state.items}/>
             </div>
         )
     }

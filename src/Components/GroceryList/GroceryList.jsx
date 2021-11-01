@@ -12,6 +12,7 @@ class GroceryList extends Component {
         };
 
         this.onSearch = this.onSearch.bind(this);
+        this.deleteItem = this.deleteItem.bind(this)
     }
 
     getRecipes(query) {
@@ -85,16 +86,25 @@ class GroceryList extends Component {
         return result;
     }
 
+    deleteItem(key) {
+        var filteredItems = this.state.items.filter(function (item) {
+            return (item.key !== key)
+        });
+        this.setState({
+            items: filteredItems
+        });
+    }
+
     render() {
         return (
             <div>
-                <h1>React App</h1>
+                <h1>Fridge Friend</h1>
                 <p>Search for a recipe you want to cook this week to get a list of groceries you will need to buy.</p>
                 <form onSubmit={this.onSearch}>
                     <input ref={(a) => this.mealName = a} placeholder="Search for a recipe" type="text"/>
                     <button>Submit</button>
                 </form>
-                <Meals entries={this.state.items}/>
+                <Meals entries={this.state.items} delete={this.deleteItem} />
                 <Groceries items={this.state.items}/>
             </div>
         )

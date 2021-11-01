@@ -11,8 +11,13 @@ class Meals extends Component {
             <div key={item.key}>
                 <div id="mealName">{item.text}</div>
                 <a href={`https://tasty.co/recipe/${item.link}`}>Recipe</a>
+                <button onClick={() => this.delete(item.key)}>Delete</button>
             </div>
         )
+    }
+
+    delete(key) {
+        this.props.delete(key);
     }
 
     render() {

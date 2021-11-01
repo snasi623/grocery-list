@@ -46,7 +46,7 @@ class GroceryList extends Component {
                 }
 
                 if (!recipe) {
-                    console.log('No recipe found');
+                    window.alert('No recipe found');
                     return;
                 }
 
@@ -73,14 +73,16 @@ class GroceryList extends Component {
     }
 
     calculateIngredients(recipe) {
-        let result = [
-            { name: "Apple", quantity: 2 },
-            { name: "Peach", quantity: 4 }
-        ]
+        let result = [];
+        for (let i = 0; i < recipe.sections.length; i++) {
+            console.log(recipe.sections[i]);
+            for (let j = 0; j < recipe.sections[i].components.length; j++) {
+                let ingredientName = recipe.sections[i].components[j].ingredient.display_singular
+                result.push(ingredientName);
+            }
+        }
 
-        // insert for loop here
-
-        return result
+        return result;
     }
 
     render() {

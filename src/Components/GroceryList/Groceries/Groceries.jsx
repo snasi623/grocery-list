@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import '../styles.css';
 
 class Groceries extends Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class Groceries extends Component {
         this.setState({
             buttonClickState: true
         });
-        console.log(this.state.buttonClickState);
     }
 
     getAllIngredients() {
@@ -32,21 +32,21 @@ class Groceries extends Component {
     render() {
         let ingredients = []
         this.getAllIngredients().forEach((ingredient) => {
-            ingredients.push(<div><input type="checkbox" /> {ingredient}</div>);
+            ingredients.push(<div className="ingredient"><input type="checkbox" className="checkbox" /> <p>{ingredient}</p></div>);
         })
 
         let { buttonClickState } = this.state;
         let GroceryListView;
 
         if (buttonClickState) {
-            GroceryListView = <div>{ingredients}</div>
+            GroceryListView = <div className="groceryList">{ingredients}</div>
         } else {
             GroceryListView = <span></span>
         }
 
         return (
-            <div>
-                <button onClick={this.onButtonClick}>Get Grocery List</button> 
+            <div className="listOfGroceries col">
+                <button onClick={this.onButtonClick} className="btn btn-dark">Get Grocery List</button> 
                 {GroceryListView}
             </div>
         );

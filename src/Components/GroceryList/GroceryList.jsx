@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Meals from './Meals/Meals';
-import Groceries from './Groceries/Groceries'
+import Groceries from './Groceries/Groceries';
+import './styles.css';
 
 class GroceryList extends Component {
     constructor(props) {
@@ -36,7 +37,6 @@ class GroceryList extends Component {
     onSearch(e) {
         if (this.mealName.value !== "") {
             this.getRecipes(this.mealName.value).then(response => {
-                console.log('Response', response);
 
                 let recipe;
                 for (let i = 0; i < response.data.results.length; i++) {
@@ -50,8 +50,6 @@ class GroceryList extends Component {
                     window.alert('No recipe found');
                     return;
                 }
-
-                console.log('Recipe', recipe);
 
                 let newItem = {
                     text: this.mealName.value,
@@ -70,13 +68,11 @@ class GroceryList extends Component {
             });
         }
         e.preventDefault();
-        console.log(this.state.items)
     }
 
     calculateIngredients(recipe) {
         let result = [];
         for (let i = 0; i < recipe.sections.length; i++) {
-            console.log(recipe.sections[i]);
             for (let j = 0; j < recipe.sections[i].components.length; j++) {
                 let ingredientName = recipe.sections[i].components[j].ingredient.display_singular
                 result.push(ingredientName);
@@ -97,14 +93,16 @@ class GroceryList extends Component {
 
     render() {
         return (
-            <div>
+            <div className="row">
                 <h1>Fridge Friend</h1>
                 <p>Search for a recipe you want to cook this week to get a list of groceries you will need to buy.</p>
-                <form onSubmit={this.onSearch}>
-                    <input ref={(a) => this.mealName = a} placeholder="Search for a recipe" type="text"/>
-                    <button>Submit</button>
-                </form>
-                <Meals entries={this.state.items} delete={this.deleteItem} />
+                <div className="col">
+                    <form onSubmit={this.onSearch}>
+                        <input ref={(a) => this.mealName = a} placeholder="Search for a recipe" type="text"/>
+                        <button class="btn btn-light">Submit</button>
+                    </form>
+                    <Meals entries={this.state.items} delete={this.deleteItem} />
+                </div>
                 <Groceries items={this.state.items}/>
             </div>
         )

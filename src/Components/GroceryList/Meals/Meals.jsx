@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles.css';
 
 class Meals extends Component {
     constructor(props) {
@@ -8,10 +9,12 @@ class Meals extends Component {
 
     createMeal(item) {
         return (
-            <div key={item.key}>
-                <div id="mealName">{item.text}</div>
-                <a href={`https://tasty.co/recipe/${item.link}`}>Recipe</a>
-                <button onClick={() => this.delete(item.key)}>Delete</button>
+            <div key={item.key} className="meal">
+                <div className="mealName">
+                    <h4>{item.text}</h4>
+                    <a href={`https://tasty.co/recipe/${item.link}`} className="btn btn-success">Recipe</a>
+                    <button onClick={() => this.delete(item.key)} className="btn btn-danger">Delete</button>
+                </div>
             </div>
         )
     }

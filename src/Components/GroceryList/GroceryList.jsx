@@ -94,7 +94,10 @@ class GroceryList extends Component {
     render() {
         return (
             <div className="row">
-                <h1>Fridge Friend</h1>
+                <div className="header">
+                    <h1>Fridge Friend</h1>
+                    <img src="../images/icon.png" alt="Fridge Logo" />
+                </div>
                 <p>Search for a recipe you want to cook this week to get a list of groceries you will need to buy.</p>
                 <div className="col">
                     <form onSubmit={this.onSearch}>

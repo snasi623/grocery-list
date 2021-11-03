@@ -46,7 +46,7 @@ class Groceries extends Component {
 
         return (
             <div className="listOfGroceries col">
-                <button onClick={this.onButtonClick} className="btn btn-dark">Get Grocery List</button> 
+                <button onClick={this.onButtonClick} className="btn btn-primary">Get Grocery List</button> 
                 {GroceryListView}
             </div>
         );

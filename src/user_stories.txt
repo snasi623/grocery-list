@@ -1,0 +1,3 @@
+As a consumer on a diet, I want an app that will help me plan my meals in advance so that I can create a shopping list that will help me plan accordingly.
+
+As a habitual saver, I want an app that will help me find recipes that will utilize leftover grocery items so that I don't waste. 

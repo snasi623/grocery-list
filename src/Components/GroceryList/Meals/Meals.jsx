@@ -11,9 +11,8 @@ class Meals extends Component {
         return (
             <div key={item.key} className="meal">
                 <div className="mealName">
-                    <h4>{item.text}</h4>
-                    <a href={`https://tasty.co/recipe/${item.link}`} className="btn btn-success">Recipe</a>
-                    <button onClick={() => this.delete(item.key)} className="btn btn-danger">Delete</button>
+                    <a href={`https://tasty.co/recipe/${item.link}`}><h4>{item.text}</h4></a>
+                    <button onClick={() => this.delete(item.key)} className="btn btn-dark">Delete</button>
                 </div>
             </div>
         )

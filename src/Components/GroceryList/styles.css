@@ -17,9 +17,6 @@ h1 {
 p {
     text-align: center;
 }
-.listOfMeals {
-    display: inline;
-}
 div.ingredient p {
     margin: 0;
     text-align: left;
@@ -33,10 +30,11 @@ div.ingredient {
 div.meal {
     background-color: #950740;
     margin: 20px;
-    border: 2px solid #44001b;
+    border: 2px solid #4e4e50;
 }
 .checkbox {
     display: inline;
+    margin: 5px;
 }
 h4 {
     display: inline;
@@ -50,8 +48,7 @@ a {
     padding: 5px;
     margin: 5px;
 }
-@media screen and (max-width: 768px) {
-    .col {
-        display: inherit;
-    }
+.icon {
+    height: 50px;
+    width: auto;
 }

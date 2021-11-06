@@ -32,7 +32,7 @@ class Groceries extends Component {
     render() {
         let ingredients = []
         this.getAllIngredients().forEach((ingredient) => {
-            ingredients.push(<div className="ingredient"><input type="checkbox" className="checkbox" /> <p>{ingredient}</p></div>);
+            ingredients.push(<div className="ingredient" key={ingredient}><input type="checkbox" className="checkbox" /> <p>{ingredient}</p></div>);
         })
 
         let { buttonClickState } = this.state;

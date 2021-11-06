@@ -96,13 +96,13 @@ class GroceryList extends Component {
             <div className="row">
                 <div className="header">
                     <h1>Fridge Friend</h1>
-                    <img src="../images/icon.png" alt="Fridge Logo" />
+                    <img src="/images/icon.png" alt="Fridge Logo" className="icon"/>
                 </div>
-                <p>Search for a recipe you want to cook this week to get a list of groceries you will need to buy.</p>
+                <p>Search for a meal you want to cook this week to get a list of groceries you will need to buy. Right click on the meal to open a copy of the recipe for reference.</p>
                 <div className="col">
                     <form onSubmit={this.onSearch}>
                         <input ref={(a) => this.mealName = a} placeholder="Search for a recipe" type="text"/>
-                        <button class="btn btn-light">Submit</button>
+                        <button className="btn btn-light">Submit</button>
                     </form>
                     <Meals entries={this.state.items} delete={this.deleteItem} />
                 </div>

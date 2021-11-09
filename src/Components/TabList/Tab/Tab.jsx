@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class OneTab extends Component {
+class Tab extends Component {
     static propTypes = {
         activeTab: PropTypes.string.isRequired,
         label: PropTypes.string.isRequired,
@@ -22,10 +22,10 @@ class OneTab extends Component {
             },
         } = this;
 
-        let className = 'tab-list-item';
+        let className = 'inactive-tab';
 
         if (activeTab === label) {
-            className += ' tab-list-active';
+            className += ' active-tab';
         }
 
         return (
@@ -34,4 +34,4 @@ class OneTab extends Component {
     }
 }
 
-export default OneTab;
+export default Tab;

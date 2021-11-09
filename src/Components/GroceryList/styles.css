@@ -9,6 +9,10 @@ body {
 h1 {
     display: inline;
     padding: 20px;
+    vertical-align: center;
+    background-color: #950740;
+    border: solid #4e4e50;
+    border-width: 2px;
 }
 .header {
     padding: 20px;
@@ -26,11 +30,13 @@ div.ingredient {
     background-color: #6f2232;
     margin: 10px;
     border: 1px solid #c3073f;
+    text-align: left;
 }
 div.meal {
-    background-color: #950740;
+    background-color: #6f2232;
     margin: 20px;
-    border: 2px solid #4e4e50;
+    border: 2px solid #c3073f;
+    text-align: left;
 }
 .checkbox {
     display: inline;
@@ -51,4 +57,25 @@ a {
 .icon {
     height: 50px;
     width: auto;
+    margin: 20px;
+}
+.tabs {  
+    text-align: center;
+}
+  
+.inactive-tab {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 0.5rem 0.75rem;
+    background-color: #950740;
+    border: solid #950740;
+    border-width: 2px;
+}
+  
+.active-tab {
+    background-color: white;
+    border: solid #950740;
+    border-width: 2px;
+    color: #1a1a1d;
 }

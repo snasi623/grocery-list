@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import OneTab from './OneTab/OneTab.jsx';
+import Tab from './Tab/Tab.jsx';
 
-class MyTabs extends Component {
+class TabList extends Component {
     static propTypes = {
         children: PropTypes.instanceOf(Array).isRequired,
     }
@@ -15,13 +15,13 @@ class MyTabs extends Component {
         }
     }
 
-    onClickTabItem = (tab) => {
+    onClickTab = (tab) => {
         this.setState({ activeTab: tab });
     }
 
     render() {
         const {
-            onClickTabItem,
+            onClickTab,
             props: {
                 children,
             },
@@ -36,7 +36,7 @@ class MyTabs extends Component {
                     {children.map((child) => {
                         const { label } = child.props;
                         return (
-                            <OneTab activeTab={activeTab} key={label} label={label} onClick={onClickTabItem}/>
+                            <Tab activeTab={activeTab} key={label} label={label} onClick={onClickTab}/>
                         );
                     })};
                 </ol>
@@ -51,4 +51,4 @@ class MyTabs extends Component {
     }
 }
 
-export default MyTabs;
+export default TabList;

@@ -62,7 +62,6 @@ a {
 .tabs {  
     text-align: center;
 }
-  
 .inactive-tab {
     display: inline-block;
     list-style: none;
@@ -72,10 +71,25 @@ a {
     border: solid #950740;
     border-width: 2px;
 }
-  
 .active-tab {
     background-color: white;
     border: solid #950740;
     border-width: 2px;
     color: #1a1a1d;
+}
+.instructions {
+    padding-bottom: 35px;
+    text-align: center;
+}
+.form-control {
+    margin: 10px;
+    width: 350px;
+}
+.contactMeForm {
+	display:flex;
+	justify-content: center;
+}
+.loader {
+    color: #950740;
+    display: inline;
 }

@@ -9,7 +9,8 @@ class GroceryList extends Component {
         super(props);
 
         this.state = {
-            items: []
+            items: [],
+            showLoadingIcon: false,
         };
 
         this.onSearch = this.onSearch.bind(this);
@@ -36,6 +37,8 @@ class GroceryList extends Component {
 
     onSearch(e) {
         if (this.mealName.value !== "") {
+            this.setState({showLoadingIcon: true});
+
             this.getRecipes(this.mealName.value).then(response => {
 
                 let recipe;
@@ -60,7 +63,8 @@ class GroceryList extends Component {
 
                 this.setState((prevState) => {
                     return {
-                        items: prevState.items.concat(newItem)
+                        items: prevState.items.concat(newItem), 
+                        showLoadingIcon: false,
                     };
                 });
 
@@ -98,6 +102,7 @@ class GroceryList extends Component {
                     <form onSubmit={this.onSearch}>
                         <input ref={(a) => this.mealName = a} placeholder="Search for a recipe" type="text"/>
                         <button className="btn btn-light">Submit</button>
+                        { this.state.showLoadingIcon && <div class="loader">Loading</div> }
                     </form>
                     <Meals entries={this.state.items} delete={this.deleteItem} />
                 </div>

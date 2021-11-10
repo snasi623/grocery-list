@@ -38,7 +38,7 @@ class TabList extends Component {
                         return (
                             <Tab activeTab={activeTab} key={label} label={label} onClick={onClickTab}/>
                         );
-                    })};
+                    })}
                 </ol>
                 <div className="tabContent">
                     {children.map((child) => {
@@ -47,7 +47,7 @@ class TabList extends Component {
                     })}
                 </div>
             </div>
-        )
+        );
     }
 }
 

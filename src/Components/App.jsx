@@ -14,10 +14,10 @@ function App() {
             </div>        
             <div className="instructions">Search for a meal you want to cook this week to get a list of groceries you will need to buy. Right click on the meal to open a copy of the recipe for reference.</div>    
             <TabList>
-                <div label="GroceryList">
+                <div label="Grocery List">
                     <GroceryList/>
                 </div>
-                <div label="ContactMe">
+                <div label="Contact Me">
                     <ContactMe/>
                 </div>
             </TabList>

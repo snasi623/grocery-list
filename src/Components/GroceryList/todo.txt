@@ -1,2 +1,0 @@
-Needs Contact Me section
-Media Query

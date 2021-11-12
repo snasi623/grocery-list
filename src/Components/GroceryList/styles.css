@@ -54,11 +54,6 @@ a {
     padding: 5px;
     margin: 5px;
 }
-.icon {
-    height: 50px;
-    width: auto;
-    margin: 20px;
-}
 .tabs {  
     text-align: center;
 }
@@ -92,4 +87,7 @@ a {
 .loader {
     color: #950740;
     display: inline;
+}
+.instructions {
+    padding: 35px;
 }
